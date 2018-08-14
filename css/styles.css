@@ -1,5 +1,4 @@
-.output {
-  font-size: 20px;
-  font-weight: 600px;
+#result {
   display: none;
+  font-size: 30px;
 }

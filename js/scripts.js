@@ -1,34 +1,21 @@
 $(document).ready(function() {
 
-  $("#blanks form").submit(function(event) {
-    // var blanks = ["number1", "number2"];
-    //
-    // blanks.forEach(function(blank) {
-    //   var userInput = $("input." + blank).val();
-    //   $("." + blank).text(userInput).val();
-    // });
+  $("#wordInput").submit(function(event) {
+    var userInput = $("#textInput").val();
+    var vowels = ["a", "e", "i", "o", "u"];
+    var userInputArray = userInput.split("");
 
-
-
-
-
-    var number1 = parseInt($("#number1").val());
-    var number2 = parseInt($("#number2").val());
-
-    if (isNaN(number1) || isNaN(number2) || number1 === undefined || number2 === undefined) {
-      alert("Please enter a number into both fields.");
-    } else if (number1 < number2) {
-      alert("Please make countby smaller than count to.")
-    } else {
-      var result=[];
-
-      var ntimes = Math.floor(number1 / number2);
-      for (var i=0;i<ntimes;i++){
-        result[i]=number2*(i+1);
+    for (i = 0; i < userInputArray.length; i++) {
+      for (j = 0; j < vowels.length; j++) {
+        if (userInputArray[i].indexOf(vowels[j]) !== -1) {
+              userInputArray[i] = "-";
+        }
       }
-      $('#output').append(result.toString());
-      $("#result").show();
     }
+
+    $("#output").text(userInputArray.join(""));
+    $("#result").show();
+    $(".intro").hide();
     event.preventDefault();
   });
 });
